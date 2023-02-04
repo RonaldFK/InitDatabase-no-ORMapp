@@ -31,7 +31,7 @@ SELECT * FROM delete_tennis_cluber(4);
 
 -- test insert club --
 SELECT * FROM insert_club('{
-						  "name":"club de la villette",
+						  "name":"club de la villette2",
 						  "opening_hour":"09:00:00",
 						  "closing_hour":"19:00:00"				
 						  }');
@@ -44,7 +44,11 @@ SELECT * FROM modify_club(1,'{
 						  }');
 
 -- test delete tennis cluber --
-SELECT * FROM delete_club(1);		
+SELECT * FROM delete_club(1);
+
+-------------------------------
+------- TABLE SCHEDULE --------
+-------------------------------
 
 -- test insert schedule --
 SELECT * FROM insert_schedule('{
@@ -66,5 +70,24 @@ SELECT * FROM modify_schedule(1,'{
 -- test delete schedule --
 SELECT * FROM delete_schedule(1);								  
 
+-------------------------------
+------- TABLE RENTAL --------
+-------------------------------
 
-select * from schedule								   
+-- test insert rental --
+SELECT * FROM insert_rental('{
+						  "tennis_cluber_id":"1",
+						  "club_id":"1",
+						  "schedule_id":"1"
+						  }');
+						  
+-- test modify rental --
+SELECT * FROM modify_rental(1,'{
+						  "tennis_cluber_id":"1",
+						  "club_id":"2",
+						  "schedule_id":"1"
+						  }');
+						  
+-- test delete rental --
+SELECT * FROM delete_rental(1);
+select * from rental								   

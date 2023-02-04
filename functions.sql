@@ -89,7 +89,7 @@ $$ LANGUAGE SQL SECURITY DEFINER;
 
 
 -------------------------------
----------- TABLE SCHEDULE ---------
+-------- TABLE SCHEDULE -------
 -------------------------------
 
 -- insert a new schedule
@@ -127,6 +127,47 @@ $$ LANGUAGE SQL SECURITY DEFINER;
 CREATE OR REPLACE FUNCTION delete_schedule(id_to_detete integer) RETURNS integer AS $$
 
 	DELETE FROM schedule where id = id_to_detete
+	RETURNING id;
+
+$$ LANGUAGE SQL SECURITY DEFINER;
+
+-------------------------------
+-------- TABLE RENTAL -------
+-------------------------------
+
+-- insert a new rental
+
+CREATE OR REPLACE FUNCTION insert_rental(data json) RETURNS rental AS $$
+
+	INSERT INTO rental(tennis_cluber_id,club_id,schedule_id)
+	VALUES (
+		(data->>'tennis_cluber_id')::INTEGER,
+		(data->>'club_id')::INTEGER,
+		(data->>'schedule_id')::INTEGER
+	)
+	RETURNING *;
+
+$$ LANGUAGE SQL SECURITY DEFINER;
+
+-- modify rental -- 
+CREATE OR REPLACE FUNCTION modify_rental(id_to_update integer,data json) RETURNS rental AS $$
+
+	UPDATE rental
+	SET 
+		tennis_cluber_id = (data->>'tennis_cluber_id')::INTEGER,
+		club_id = (data->>'club_id')::INTEGER,
+		schedule_id = (data->>'end_hour')::INTEGER
+	WHERE id = id_to_update
+	RETURNING *;
+
+$$ LANGUAGE SQL SECURITY DEFINER;
+
+								   
+-- delete rental --
+
+CREATE OR REPLACE FUNCTION delete_rental(id_to_detete integer) RETURNS integer AS $$
+
+	DELETE FROM rental where id = id_to_detete
 	RETURNING id;
 
 $$ LANGUAGE SQL SECURITY DEFINER;
