@@ -33,9 +33,9 @@ CREATE TABLE tennis_cluber (
 CREATE TABLE club (
 	"id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	"name" TEXT NOT NULL UNIQUE,
-	"number" INTEGER NOT NULL UNIQUE, -- use "club_number" sequence to field this data
-	"opening_hour" TIMETZ NOT NULL,
-	"closing_hour" TIMETZ NOT NULL
+	"number" INTEGER DEFAULT 0 UNIQUE, -- use "club_number" sequence to field this data
+	"opening_hour" TIME NOT NULL,
+	"closing_hour" TIME NOT NULL
 );
 
 CREATE TABLE schedule (

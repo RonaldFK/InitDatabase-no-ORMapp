@@ -1,3 +1,7 @@
+-------------------------------
+----- TABLE TENNIS CLUBER -----
+-------------------------------
+
 -- test insert tennis cluber --
 SELECT * FROM insert_tennis_cluber('{
 								   "firstname":"bobi",
@@ -21,4 +25,13 @@ SELECT * FROM modify_tennis_cluber(2,'{
 -- test delete tennis cluber --
 SELECT * FROM delete_tennis_cluber(4);		
 
-select * from tennis_cluber
+-------------------------------
+--------- TABLE CLUB ----------
+-------------------------------
+
+-- test insert club --
+SELECT * FROM insert_club('{
+						  "name":"club de la villette",
+						  "opening_hour":"09:00:00",
+						  "closing_hour":"19:00:00"				
+						  }');
