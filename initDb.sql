@@ -42,7 +42,10 @@ CREATE TABLE schedule (
 	"id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	"tennis_cluber_id" INTEGER REFERENCES "tennis_cluber"("id"),
 	"club_id" INTEGER REFERENCES "club"("id"),
-	"status" TEXT NOT NULL DEFAULT 'pending'
+	"status" TEXT NOT NULL DEFAULT 'pending',
+	"start_hour" TIME NOT NULL,
+	"end_hour" TIME NOT NULL,
+	UNIQUE(tennis_cluber_id,club_id,status) -- to block possibility to reserved more two course by day
 );
 
 CREATE TABLE rental (
