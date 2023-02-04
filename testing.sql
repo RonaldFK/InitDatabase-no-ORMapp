@@ -16,4 +16,9 @@ SELECT * FROM modify_tennis_cluber(2,'{
 								   "password":"test",
 								   "email":"bobi1.doeRe@gmail.com",
 								   "activ":"1"
-								   }');								  
+								   }');
+								   
+-- test delete tennis cluber --
+SELECT * FROM delete_tennis_cluber(4);		
+
+select * from tennis_cluber
