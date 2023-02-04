@@ -171,3 +171,85 @@ CREATE OR REPLACE FUNCTION delete_rental(id_to_detete integer) RETURNS integer A
 	RETURNING id;
 
 $$ LANGUAGE SQL SECURITY DEFINER;
+
+-------------------------------
+------- TABLE RENTAL_LIST------
+-------------------------------
+
+-- insert a new rental_list
+
+CREATE OR REPLACE FUNCTION insert_rental_list(data json) RETURNS rental_list AS $$
+
+	INSERT INTO rental_list(rental_id,quantity,rental_elem_id)
+	VALUES (
+		(data->>'rental_id')::INTEGER,
+		(data->>'quantity')::INTEGER,
+		(data->>'rental_elem_id')::INTEGER
+	)
+	RETURNING *;
+
+$$ LANGUAGE SQL SECURITY DEFINER;
+
+-- modify rental_list -- 
+CREATE OR REPLACE FUNCTION modify_rental_list(id_to_update integer,data json) RETURNS rental_list AS $$
+
+	UPDATE rental_list
+	SET 
+		rental_id = (data->>'rental_id')::INTEGER,
+		quantity = (data->>'quantity')::INTEGER,
+		rental_elem_id = (data->>'rental_elem_id')::INTEGER
+	WHERE id = id_to_update
+	RETURNING *;
+
+$$ LANGUAGE SQL SECURITY DEFINER;
+
+								   
+-- delete rental_list --
+
+CREATE OR REPLACE FUNCTION delete_rental_list(id_to_detete integer) RETURNS integer AS $$
+
+	DELETE FROM rental_list where id = id_to_detete
+	RETURNING id;
+
+$$ LANGUAGE SQL SECURITY DEFINER;
+
+-------------------------------
+------- TABLE RENTAL_ELEM------
+-------------------------------
+
+-- insert a new rental_elem
+
+CREATE OR REPLACE FUNCTION insert_rental_elem(data json) RETURNS rental_elem AS $$
+
+	INSERT INTO rental_elem(name,description,price)
+	VALUES (
+		(data->>'name'),
+		(data->>'description'),
+		(data->>'price')::INTEGER
+	)
+	RETURNING *;
+
+$$ LANGUAGE SQL SECURITY DEFINER;
+
+-- modify rental_elem -- 
+CREATE OR REPLACE FUNCTION modify_rental_elem(id_to_update integer,data json) RETURNS rental_elem AS $$
+
+	UPDATE rental_elem
+	SET 
+		name = (data->>'name'),
+		description = (data->>'description'),
+		price = (data->>'price')::INTEGER
+	WHERE id = id_to_update
+	RETURNING *;
+
+$$ LANGUAGE SQL SECURITY DEFINER;
+
+								   
+-- delete rental_elem --
+
+CREATE OR REPLACE FUNCTION delete_rental_elem(id_to_detete integer) RETURNS integer AS $$
+
+	DELETE FROM rental_elem where id = id_to_detete
+	RETURNING id;
+
+$$ LANGUAGE SQL SECURITY DEFINER;

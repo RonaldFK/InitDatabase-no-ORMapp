@@ -31,11 +31,16 @@ SELECT * FROM delete_tennis_cluber(4);
 
 -- test insert club --
 SELECT * FROM insert_club('{
-						  "name":"club de la villette2",
+						  "name":"club de la villette",
 						  "opening_hour":"09:00:00",
 						  "closing_hour":"19:00:00"				
 						  }');
 						  
+SELECT * FROM insert_club('{
+						  "name":"club de la villette2",
+						  "opening_hour":"09:00:00",
+						  "closing_hour":"19:00:00"				
+						  }');						  
 -- test modify club --
 SELECT * FROM modify_club(1,'{
 						  "name":"club de la ville première",
@@ -90,4 +95,47 @@ SELECT * FROM modify_rental(1,'{
 						  
 -- test delete rental --
 SELECT * FROM delete_rental(1);
-select * from rental								   
+
+-------------------------------
+------ TABLE RENTAL_LIST ------
+-------------------------------
+
+-- test insert rental_list --
+SELECT * FROM insert_rental_list('{
+						  "rental_id":"1",
+						  "quantity":"5",
+						  "rental_elem_id":"1"
+						  }');
+						  
+-- test modify rental_list --
+SELECT * FROM modify_rental_list(1,'{
+						  "rental_id":"1",
+						  "quantity":"6",
+						  "rental_elem_id":"1"
+						  }');
+						  
+-- test delete rental_list --
+SELECT * FROM delete_rental_list(1);
+
+-------------------------------
+------ TABLE RENTAL_ELEM ------
+-------------------------------
+
+-- test insert rental_elem --
+SELECT * FROM insert_rental_elem('{
+						  "name":"short nike",
+						  "description":"un short de marque nike",
+						  "price":"60"
+						  }');
+						  
+-- test modify rental_elem --
+SELECT * FROM modify_rental_elem(1,'{
+						  "name":"short nike nouvelle édition",
+						  "description":"un short de marque nike",
+						  "price":"60"
+						  }');
+						  
+-- test delete rental_elem --
+SELECT * FROM delete_rental_elem(1);
+
+select * from rental_list								   
