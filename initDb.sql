@@ -76,6 +76,11 @@ ALTER TABLE rental_list ADD CONSTRAINT CONSTRAINT_RENTAL_LIST UNIQUE(rental_id,r
 --INSERT INTO club(name,number,opening_hour,closing_hour) values('test4',nextval('club_number'),5,5);
 COMMIT;
 
+-- CREATING INDEX --
+
+CREATE INDEX idx_tennis_cluber ON tennis_cluber("id");
+CREATE INDEX idx_club ON club("id");
+
 -- END GLOBAL PROCESS --
 
 
