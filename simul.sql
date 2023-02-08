@@ -23,7 +23,7 @@ SELECT * FROM modify_tennis_cluber(2,'{
 								   }');
 								   
 -- test delete tennis cluber --
-SELECT * FROM delete_tennis_cluber(4);		
+SELECT * FROM delete_tennis_cluber(50);		
 
 -------------------------------
 --------- TABLE CLUB ----------
@@ -49,7 +49,7 @@ SELECT * FROM modify_club(1,'{
 						  }');
 
 -- test delete tennis cluber --
-SELECT * FROM delete_club(1);
+SELECT * FROM delete_club(50);
 
 -------------------------------
 ------- TABLE SCHEDULE --------
@@ -73,7 +73,7 @@ SELECT * FROM modify_schedule(1,'{
 						  }');
 						  
 -- test delete schedule --
-SELECT * FROM delete_schedule(1);								  
+SELECT * FROM delete_schedule(50);								  
 
 -------------------------------
 ------- TABLE RENTAL --------
@@ -94,28 +94,7 @@ SELECT * FROM modify_rental(1,'{
 						  }');
 						  
 -- test delete rental --
-SELECT * FROM delete_rental(1);
-
--------------------------------
------- TABLE RENTAL_LIST ------
--------------------------------
-
--- test insert rental_list --
-SELECT * FROM insert_rental_list('{
-						  "rental_id":"1",
-						  "quantity":"5",
-						  "rental_elem_id":"1"
-						  }');
-						  
--- test modify rental_list --
-SELECT * FROM modify_rental_list(1,'{
-						  "rental_id":"1",
-						  "quantity":"6",
-						  "rental_elem_id":"1"
-						  }');
-						  
--- test delete rental_list --
-SELECT * FROM delete_rental_list(1);
+SELECT * FROM delete_rental(50);
 
 -------------------------------
 ------ TABLE RENTAL_ELEM ------
@@ -136,6 +115,29 @@ SELECT * FROM modify_rental_elem(1,'{
 						  }');
 						  
 -- test delete rental_elem --
-SELECT * FROM delete_rental_elem(1);
+SELECT * FROM delete_rental_elem(50);
+
+-------------------------------
+------ TABLE RENTAL_LIST ------
+-------------------------------
+
+-- test insert rental_list --
+SELECT * FROM insert_rental_list('{
+						  "rental_id":"1",
+						  "quantity":"5",
+						  "rental_elem_id":"1"
+						  }');
+						  
+-- test modify rental_list --
+SELECT * FROM modify_rental_list(1,'{
+						  "rental_id":"1",
+						  "quantity":"6",
+						  "rental_elem_id":"1"
+						  }');
+						  
+-- test delete rental_list --
+SELECT * FROM delete_rental_list(50);
+
+
 
 select * from rental_list								   

@@ -1,6 +1,6 @@
 BEGIN;
 -- TRUNCATE TABLES --
-TRUNCATE TABLE tennis_cluber,club,schedule,rental,rental_elem,rental_list CASCADE;
+TRUNCATE TABLE tennis_cluber,club,schedule,rental,rental_elem,rental_list RESTART IDENTITY CASCADE;
 --TRUNCATE TABLE users.tennis_cluber,admin.club,admin.schedule,admin.rental,admin.rental_elem CASCADE;
 
 -- DROP TABLES --
@@ -27,6 +27,8 @@ CREATE TABLE tennis_cluber (
 	"password" TEXT NOT NULL,
 	"email" VALID_EMAIL NOT NULL UNIQUE,
 	"activ" BOOLEAN DEFAULT false,
+	"created_at" TIMESTAMPTZ DEFAULT NOW(),
+	"updated_at" TIMESTAMPTZ,
 	UNIQUE(firstname,lastname,login,email)
 );
 
@@ -35,7 +37,9 @@ CREATE TABLE club (
 	"name" TEXT NOT NULL UNIQUE,
 	"number" INTEGER DEFAULT 0 UNIQUE, -- use "club_number" sequence to field this data
 	"opening_hour" TIME NOT NULL,
-	"closing_hour" TIME NOT NULL
+	"closing_hour" TIME NOT NULL,
+	"created_at" TIMESTAMPTZ DEFAULT NOW(),
+	"updated_at" TIMESTAMPTZ
 );
 
 CREATE TABLE schedule (
@@ -43,29 +47,38 @@ CREATE TABLE schedule (
 	"tennis_cluber_id" INTEGER REFERENCES "tennis_cluber"("id"),
 	"club_id" INTEGER REFERENCES "club"("id"),
 	"status" TEXT NOT NULL DEFAULT 'pending',
+	"date" TIMESTAMPTZ,
 	"start_hour" TIME NOT NULL,
 	"end_hour" TIME NOT NULL,
-	UNIQUE(tennis_cluber_id,club_id,status) -- to block possibility to reserved more two course by day
+	"created_at" TIMESTAMPTZ DEFAULT NOW(),
+	"updated_at" TIMESTAMPTZ,
+	UNIQUE(tennis_cluber_id,club_id,status,date,start_hour,end_hour) -- to block possibility to reserved more two course by day
 );
 
 CREATE TABLE rental (
 	"id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	"tennis_cluber_id" INTEGER REFERENCES "tennis_cluber"("id"),
 	"club_id" INTEGER REFERENCES "club"("id"),
+	"created_at" TIMESTAMPTZ DEFAULT NOW(),
+	"updated_at" TIMESTAMPTZ,
 	"schedule_id" INTEGER REFERENCES "schedule"("id")
 );
 
 CREATE TABLE rental_list (
 	"id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	"rental_id" INTEGER REFERENCES "rental"("id"),
-	"quantity" INTEGER NOT NULL DEFAULT 1
+	"quantity" INTEGER NOT NULL DEFAULT 1,
+	"created_at" TIMESTAMPTZ DEFAULT NOW(),
+	"updated_at" TIMESTAMPTZ
 );
 
 CREATE TABLE rental_elem (
 	"id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	"name" NAME NOT NULL UNIQUE,
 	"description" TEXT DEFAULT 'ajouter une description',
-	"price" INTEGER NOT NULL DEFAULT 0
+	"price" INTEGER NOT NULL DEFAULT 0,
+	"created_at" TIMESTAMPTZ DEFAULT NOW(),
+	"updated_at" TIMESTAMPTZ
 );
 -- END CREATING TABLE PROCESS--
 
