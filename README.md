@@ -12,7 +12,6 @@ En effet, en procédant de cette manière, l'utilisateur n'aura plus nécessiyt�
 
 
 ### Todo :
- - Finaliser les vues.
  - Implémentation des tests.
 
 
