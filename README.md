@@ -11,9 +11,6 @@ En procédant de cette manière, le but premier est de fermer tout accès aux ut
 En effet, en procédant de cette manière, l'utilisateur n'aura plus nécessiyté d'avoir le droit de modification sur les tables , mais passera par nos focntions pour effectuer ses actions CRUD.
 
 
-### Todo :
- - Implémentation des tests.
-
 
 ### Outils / Notions :
 
@@ -22,7 +19,6 @@ En effet, en procédant de cette manière, l'utilisateur n'aura plus nécessiyt�
 - PGAdmin.
 - DOMAIN pour la création de type de données générique afin de rajouter un contrôle sur les email notamment avec un REGEX.
 - TRIGGER pour déclencher l'archivage de certaines données avant sup^pression.
-- PGTap (à tester, je me documente) pour implémenter des tests en SQL.
 
 
 ### Cloner le projet :
