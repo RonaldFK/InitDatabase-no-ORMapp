@@ -3,7 +3,7 @@
 [![forthebadge](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](#)
 
 
-### Projet ( en cours ) :
+### Projet :
 
 Ce projet purement SQL vient déplacer, amener une partie sécurité au niveau de la base de données ( ici Postgres ).
 L'idée est de mettre en place des focntions et des vues qui seront accessibles depuis l'application web par simple requête SELECT.
