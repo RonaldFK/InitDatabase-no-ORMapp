@@ -15,7 +15,7 @@ En effet, en procédant de cette manière, l'utilisateur n'aura plus nécessiyt�
 ### Outils / Notions :
 
 - PostgresSQL pour le stockage des données de l'application.
-- Docker pour exécuter notre conteneur Docker.
+- Docker pour exécuter notre conteneur Postgres.
 - PGAdmin.
 - DOMAIN pour la création de type de données générique afin de rajouter un contrôle sur les email notamment avec un REGEX.
 - TRIGGER pour déclencher l'archivage de certaines données avant sup^pression.
